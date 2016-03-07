@@ -1,37 +1,18 @@
-<style>
-.icon .glyphicon {
-  margin-bottom: 10px;
-  font-size: 40px;
-  color: #777;
-}
-.content{
-  font-size: 20px;
-}
-</style>
-
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
-
-<div class="container-fluid" >
-  <div class="row">
-    <div class="icon col-md-1">
-      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-     <div class="icon-caption">生年月日</div>  
-    </div>
-    <div class="content col-md-11">
-      <%= @user.birthday %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="icon col-md-1">
-      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-     <div class="icon-caption">地域</div>  
-    </div>
-    <div class="content col-md-11">
-      <%= @user.address %>
-    </div>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
   </div>
 </div>

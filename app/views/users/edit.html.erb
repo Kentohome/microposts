@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<h1>Edit profile</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -17,11 +17,11 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       
-      <%= f.label :birthday %>
+      <%f.label :birthday %>
       <%= f.date_select :birthday, class:'form-control' %>
       
-      <%= f.label :address %>
-      <%= f.select :address, ["北海道","東北","関東","北陸","中部","近畿","中国・四国","九州・沖縄"], class:'form-control' %>
+      <%f.label :address %>
+      <%= f.select :address,["北海道","東北","関東","北陸","中部","近畿","中国・四国","九州・沖縄"], class:'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

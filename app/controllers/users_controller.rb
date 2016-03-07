@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    include SessionsHelper
+    before_action :set_user, only: [:edit, :update]
+    
   def new
     @user = User.new
   end
@@ -15,12 +18,30 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+   end
+  
+  def edit
+      if logged_in?
+      end
   end
-
+  
+  def update
+      if logged_in?
+          if @user.update(user_params)
+              redirect_to @user, notice: '更新しました'
+          else render 'edit'
+          end
+      end
+  end
+      
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :birthday, :address)
+  end
+  
+  def set_user
+  @user = User.find(params[:id])
   end
 end
